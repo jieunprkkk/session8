@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>[ {{ category }} ]</h2>
+    <h4>{{ total_articles }}개의 글</h4>
+    <div class="container">
+        <ul>
+            {% for article in articles %}
+            <li>
+                <h3><a href="{% url 'detail' article.id %}">{{ article.title }}</a></h3>
+            </li>
+            {% empty %}
+            <li>해당 카테고리에 글이 없습니다. </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <button class="back-button" onclick="goBack()">HOME</button>
+
+    <script>
+        function goBack() {
+            window.history.back()
+        }
+    </script>
+</body>
+</html>
